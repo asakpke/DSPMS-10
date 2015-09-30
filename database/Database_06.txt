@@ -1,0 +1,148 @@
+-- phpMyAdmin SQL Dump
+-- version 3.1.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jan 16, 2009 at 01:29 AM
+-- Server version: 5.1.30
+-- PHP Version: 5.2.8
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `dspms`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`admin_id`),
+  UNIQUE KEY `login` (`login`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `login`, `password`, `name`) VALUES
+(1, 'admin', 'admin', 'Administrator'),
+(2, 'as', 'as', 'AS');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project`
+--
+
+CREATE TABLE IF NOT EXISTS `project` (
+  `tutor_id` int(11) NOT NULL,
+  `supervisor_id` int(11) DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  `project_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `start_date` date DEFAULT NULL,
+  `first_review_date` date DEFAULT NULL,
+  `second_review_date` date DEFAULT NULL,
+  `submission_date` date DEFAULT NULL,
+  `terms_of_reference` varchar(50) DEFAULT NULL,
+  `project_schedule` varchar(50) DEFAULT NULL,
+  `gantt_chart` varchar(50) DEFAULT NULL,
+  `project_log` varchar(50) DEFAULT NULL,
+  `research_chapter` varchar(50) DEFAULT NULL,
+  `dissertation_table_of_content` varchar(50) DEFAULT NULL,
+  `dissertation` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`project_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`tutor_id`, `supervisor_id`, `student_id`, `project_id`, `name`, `start_date`, `first_review_date`, `second_review_date`, `submission_date`, `terms_of_reference`, `project_schedule`, `gantt_chart`, `project_log`, `research_chapter`, `dissertation_table_of_content`, `dissertation`) VALUES
+(1, 1, 1, 1, 'project1', '0000-00-00', '0000-00-00', '0000-00-00', '2009-01-20', 'terms_of_reference_1.txt', 'project_schedule_1.txt', 'gantt_chart_1.txt', 'project_log_1.txt', 'research_chapter_1.txt', 'dissertation_table_of_content_1.txt', 'dissertation_1.txt'),
+(1, 1, 2, 2, 'project2', '0000-00-00', '0000-00-00', '0000-00-00', '2009-01-25', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 1, 7, 'project7', '2009-01-25', '2009-01-26', '2009-01-27', '2009-01-14', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 1, 6, 'project3', '2009-01-16', '2009-01-21', '2009-01-26', '2009-01-17', 'terms_of_reference_6.txt', 'project_schedule_6.txt', NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+CREATE TABLE IF NOT EXISTS `student` (
+  `student_id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`student_id`),
+  UNIQUE KEY `login` (`login`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`student_id`, `login`, `password`, `name`) VALUES
+(1, 'student1', 'student1', 'Student 1'),
+(2, 'student2', 'student2', 'Student 2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supervisor`
+--
+
+CREATE TABLE IF NOT EXISTS `supervisor` (
+  `supervisor_id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`supervisor_id`),
+  UNIQUE KEY `login` (`login`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `supervisor`
+--
+
+INSERT INTO `supervisor` (`supervisor_id`, `login`, `password`, `name`) VALUES
+(1, 'supervisor1', 'supervisor1', 'Supervisor 1'),
+(2, 'supervisor2', 'supervisor2', 'Supervisor 2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tutor`
+--
+
+CREATE TABLE IF NOT EXISTS `tutor` (
+  `tutor_id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`tutor_id`),
+  UNIQUE KEY `login` (`login`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+
+--
+-- Dumping data for table `tutor`
+--
+
+INSERT INTO `tutor` (`tutor_id`, `login`, `password`, `name`) VALUES
+(1, 'tutor1', 'tutor1', 'Tutor No. 1'),
+(2, 'tutor2', 'tu', 'Tutor No. 2'),
+(19, 'xyz', 'xyz', 'XYZ'),
+(20, 'tt', 'tt', 'tt'),
+(17, 'test', 'test', 'Test'),
+(27, 'j', 'j', 'g'),
+(26, 'g', 'g', 'j');

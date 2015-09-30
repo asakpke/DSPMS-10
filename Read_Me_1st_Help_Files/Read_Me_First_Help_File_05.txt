@@ -1,0 +1,1 @@
+Now in tutor, manage project option almost fully working
