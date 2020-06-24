@@ -13,7 +13,7 @@ tutor login = "tutor1"
 tutor password = "tutor1"
 
 supervisor = "supervisor1"
-supervisor password = "supervisor 1"
+supervisor password = "supervisor1"
 
 student login = "student1"
 student password = "student1"
