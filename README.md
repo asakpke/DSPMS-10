@@ -16,3 +16,5 @@ supervisor password = "supervisor1"
 
 student login = "student1"
 student password = "student1"
+
+[Become a patron](https://patreon.com/asakpke)
