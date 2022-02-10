@@ -18,18 +18,18 @@ if(isset($_POST['admin_id']))
 	//echo '<br />sql = ' . $sql . '<br />';
 	//exit;
 
-	if(!mysql_query($sql))
+	if(!mysqli_query($sql))
 	{
-		if(mysql_errno() == 1062) // rec exists
+		if(mysqli_errno() == 1062) // rec exists
 		{
 			//print 'Record already exists for "' . $_REQUEST['txtFullName'] . '"';
 			$_SESSION['msg'] = 'Record already exists with this login: ' . $_POST['login'];
 		}
 		else
 		{
-			$_SESSION['msg'] = mysql_errno() . '<br />Error: ' . mysql_error();
+			$_SESSION['msg'] = mysqli_errno() . '<br />Error: ' . mysqli_error();
 		}
-	} // if(!mysql_query($sql))
+	} // if(!mysqli_query($sql))
 	else
 	{
 		$_SESSION['msg'] =  'Record updated successfully.';
@@ -37,7 +37,7 @@ if(isset($_POST['admin_id']))
 
 	$_GET['admin_id'] = $_POST['admin_id'];
 
-	//mysql_close($con);
+	//mysqli_close($con);
 	//echo "<br>end";
 }
 
@@ -48,14 +48,14 @@ if(isset($_GET['admin_id']))
 	include('db_connection.php');
   
 	$sql = 'SELECT * FROM admin WHERE admin_id = ' . $_GET['admin_id'];
-	$result = mysql_query($sql);
+	$result = mysqli_query($sql);
 
 	//echo '<br />sql = ' . $sql . '<br />';
 	//exit;
 
-	$row = mysql_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 
-	//mysql_close($con);
+	//mysqli_close($con);
 	//echo "<br>end";
 }
 

@@ -1,15 +1,14 @@
 <?php
-$con = mysql_connect('localhost','root','mysql');
+$con = mysqli_connect('localhost', 'root', '', 'dspms');
 if (!$con)
 {
-	die('<br />Could not connect: ' . mysql_error());
+	die('<br />Could not connect: ' . mysqli_error());
 }
 
 // some code
 //echo '<br />con = ' . $con; 
-$result = mysql_select_db('dspms', $con);
-if(!$result)
-{
-	die('<br />Could not select DB: ' . mysql_error());
-}
-?>
+// $result = mysqli_select_db('dspms', $con);
+// if(!$result)
+// {
+// 	die('<br />Could not select DB: ' . mysqli_error());
+// }
