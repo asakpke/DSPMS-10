@@ -22,23 +22,23 @@ if(isset($_POST['login']) && isset($_POST['password']))
 	//exit;
 
   
-	$sql = "INSERT INTO tutor VALUES ( NULL , '";
+	$sql = "INSERT INTO tutor VALUES ( null , '";
 	$sql = $sql . $_POST['login'] . "', '" . $_POST['password'] . "', '" . $_POST['name'] . "');"; 
 
-	//echo '<br />sql = ' . $sql . '<br />';
+	// echo '<br />sql = ' . $sql . '<br />';
 
-	if(!mysql_query($sql))
+	if(!mysqli_query($sql))
 	{
-		if(mysql_errno() == 1062) // rec exists
+		if(mysqli_errno() == 1062) // rec exists
 		{
 			//print 'Record already exists for "' . $_REQUEST['txtFullName'] . '"';
 			$_SESSION['msg'] = 'Record already exists with this login: ' . $_POST['login'];
 		}
 		else
 		{
-			$_SESSION['msg'] = mysql_errno() . '<br />Error: ' . mysql_error();
+			$_SESSION['msg'] = mysqli_errno() . '<br />Error: ' . mysqli_error();
 		}
-	} // if(!mysql_query($sql))
+	} // if(!mysqli_query($sql))
 	else
 	{
 		$_SESSION['msg'] =  $_POST['login'] . "'s record created successfully.";
@@ -47,7 +47,7 @@ if(isset($_POST['login']) && isset($_POST['password']))
 	header('Location: admin_mge_tutor_main.php');		
 	exit;
 
-	//mysql_close($con);
+	//mysqli_close($con);
 	//echo "<br>end";
 }
 

@@ -19,26 +19,26 @@ if(isset($_POST['login']) && isset($_POST['password']))
 
 	include('db_connection.php');
   
-	//$result = mysql_query("SELECT * FROM tutor HERE login =", $con);
+	//$result = mysqli_query("SELECT * FROM tutor HERE login =", $con);
 
 	$sql = "SELECT * FROM tutor WHERE login='" . $_POST['login'] . "' AND password='" . $_POST['password'] . "';";
 	//echo '<br />sql = ' . $sql;
 	//exit;
-	$result = mysql_query($sql);
+	$result = mysqli_query($sql);
 
 	//if(!$result)
 	//{
-		//die('<br />Could not query DB: ' . mysql_error());
+		//die('<br />Could not query DB: ' . mysqli_error());
 	//}
 
-	$num_rows = mysql_num_rows($result);
+	$num_rows = mysqli_num_rows($result);
 
 	if($num_rows)
 	{
 		//echo '<br />login ok';
 		//exit;
 
-		$row = mysql_fetch_array($result);
+		$row = mysqli_fetch_array($result);
 
 		$_SESSION['tutor_id'] = $row['tutor_id'];
 		$_SESSION['msg'] = 'You are login successfully.';

@@ -18,18 +18,17 @@ if(isset($_POST['tutor_id']))
 	//echo '<br />sql = ' . $sql . '<br />';
 	//exit;
 
-	if(!mysql_query($sql))
+	if(!mysqli_query($sql))
 	{
-		if(mysql_errno() == 1062) // rec exists
+		if(mysqli_errno() == 1062) // rec exists
 		{
 			//print 'Record already exists for "' . $_REQUEST['txtFullName'] . '"';
-			$_SESSION['msg'] = 'Record already exists with this login: ' . $_POST['login'];
-		}
+			$_SESSION['msg'] = 'Record already exists with this login: ' . $_POST['login'];}
 		else
 		{
-			$_SESSION['msg'] = mysql_errno() . '<br />Error: ' . mysql_error();
+			$_SESSION['msg'] = mysqli_errno() . '<br />Error: ' . mysqli_error();
 		}
-	} // if(!mysql_query($sql))
+	} // if(!mysqli_query($sql))
 	else
 	{
 		$_SESSION['msg'] =  'Record updated successfully.';
@@ -37,7 +36,7 @@ if(isset($_POST['tutor_id']))
 
 	$_GET['tutor_id'] = $_POST['tutor_id'];
 
-	//mysql_close($con);
+	//mysqli_close($con);
 	//echo "<br>end";
 }
 
@@ -48,14 +47,14 @@ if(isset($_GET['tutor_id']))
 	include('db_connection.php');
   
 	$sql = 'SELECT * FROM tutor WHERE tutor_id = ' . $_GET['tutor_id'];
-	$result = mysql_query($sql);
+	$result = mysqli_query($sql);
 
 	//echo '<br />sql = ' . $sql . '<br />';
 	//exit;
 
-	$row = mysql_fetch_array($result);
+	$row = mysqli_fetch_array($result);
 
-	//mysql_close($con);
+	//mysqli_close($con);
 	//echo "<br>end";
 }
 

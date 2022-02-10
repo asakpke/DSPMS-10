@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect('localhost','root','','dspms');
+$con = mysqli_connect('localhost', 'root', '', 'dspms');
 if (!$con)
 {
 	die('<br />Could not connect: ' . mysqli_error());
